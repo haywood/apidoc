@@ -1,3 +1,5 @@
+language: scala
+
 before_script:
   - createuser -U postgres -s -d -r api
   - createdb -U api api
