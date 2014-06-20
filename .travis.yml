@@ -3,3 +3,9 @@ scala:
   - 2.11.1
 jdk:
   - oraclejdk8
+services:
+  - postgresql
+before_script:
+  - createuser -U postgres -s -d -r api
+  - createdb -U api api
+  - "find schema/scripts -type f -exec psql -U api -h localhost -d api -f {} \;"
