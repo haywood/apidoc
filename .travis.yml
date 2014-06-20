@@ -1,0 +1,12 @@
+before_script:
+  - createuser -U postgres -s -d -r api
+  - createdb -U api api
+  - "find schema/scripts -type f -exec psql -U api -h localhost -d api -f {} \;"
+
+script: "sbt test"
+
+scala:
+  - "2.11.1"
+
+addons:
+    postgresql: "9.3"
